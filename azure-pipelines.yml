@@ -1,0 +1,20 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- checkout: self
+- script: |
+    echo Starting sync
+    git remote add github https://github.com/raymon-roos/open-ICT-robot-mascot.git
+    git pull github main --force
+    git push origin main --force
+  displayName: 'Sync from GitHub to Azure DevOps'
+
