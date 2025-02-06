@@ -3,6 +3,10 @@ name: Sync
 on:
   schedule:
     - cron: '0 0 * * *' # Runs every day at midnight. 
+  push:
+    branches:
+      - main # Runs when pushed to main
+      
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
