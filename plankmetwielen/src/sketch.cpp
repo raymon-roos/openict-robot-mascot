@@ -32,9 +32,11 @@ void setup()
 
     motor_init(motor_a);
     motor_init(motor_b);
-}
 
-static uint8_t speed = 0;
+    // temp
+    motor_drive(motor_a, LEFT, 100);
+    motor_drive(motor_b, LEFT, 100);
+}
 
 void loop()
 {
