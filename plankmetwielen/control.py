@@ -1,3 +1,8 @@
+'''
+
+This is example code for controlling the esp32 connected to the motor driver
+
+'''
 import time
 import serial
 import pyautogui
@@ -8,6 +13,15 @@ ser = serial.Serial()
 
 ser.baudrate = 115200
 ser.port = "COM4"
+
+# The arguments for this function MUST be between (and including) 0-254, but may not be higher than 255
+def sendMotorCommand(directionA: int, speedA: int, directionB: int, speedB: int):
+    if 0 > directionA > 1 or 0 > speedA > 254 or 0 > directionB > 1 or 0 > speedB > 254:
+        print("motor command is not in a valid range 0-254 for speeds or 0-1 for directions")
+        return
+
+    ser.flush()
+    ser.write(bytes([directionA, speedA, directionB, speedB]))
 
 def sendSpeedFromMousePosition():
     mouse_x, mouse_y = pyautogui.position()
