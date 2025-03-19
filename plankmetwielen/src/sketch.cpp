@@ -33,17 +33,19 @@ void setup()
     motor_init(motor_a);
     motor_init(motor_b);
 
-    // temp
-    motor_drive(motor_a, LEFT, 100);
-    motor_drive(motor_b, LEFT, 100);
+    // stop the motors by default
+    motor_drive(motor_a, LEFT, 0);
+    motor_drive(motor_b, LEFT, 0);
 }
 
 void loop()
 {
+    // wait for 4 bytes from serial (dir1, speed1, dir2, speed2)
     if (Serial.available() >= 4) {
         
         char buffer[4];
 
+        // read exactly 4 bytes
         Serial.readBytes(buffer, 4);
 
         uint8_t 
@@ -53,6 +55,7 @@ void loop()
             motorDirection_a = (MotorDirection)buffer[0],
             motorDirection_b = (MotorDirection)buffer[2];
 
+        // drive the motors
         motor_drive(motor_a, motorDirection_a, motorSpeed_a);
         motor_drive(motor_b, motorDirection_b, motorSpeed_b);
     }
