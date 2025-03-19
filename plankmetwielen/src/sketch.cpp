@@ -40,7 +40,7 @@ void setup()
 
 void loop()
 {
-    // wait for 4 bytes from serial (dir1, speed1, dir2, speed2)
+    // wait for 4 bytes from serial (dir1, speed1, dir2, speed2
     if (Serial.available() >= 4) {
         
         char buffer[4];
