@@ -21,11 +21,19 @@ def sendSpeedFromMousePosition():
 def main():
     ser.open()
     ser.flush()
+    ser.write(bytes([0, 0, 0, 0]))
+    time.sleep(5)
 
-    while True:
-        # sendSpeedFromMousePosition()
+    # while True:
+    #     # sendSpeedFromMousePosition()
+    #     ser.write(bytes([0, 255, 0, 255]))
+    #     time.sleep(1)
+    for i in range(4):
         ser.write(bytes([0, 255, 0, 255]))
         time.sleep(1)
+        ser.write(bytes([0, 0, 0, 255]))
+        time.sleep(1)
+        
 
     ser.close()
 
