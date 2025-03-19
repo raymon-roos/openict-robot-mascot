@@ -55,5 +55,5 @@ void loop() {
     Serial.print(afstand_achter, 0); // tweede waarden in print
   }
 
-  delay(500);
+  delay(100);
 }
