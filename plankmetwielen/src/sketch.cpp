@@ -32,15 +32,12 @@ void setup()
 
     motor_init(motor_a);
     motor_init(motor_b);
-
-    // stop the motors by default
-    motor_drive(motor_a, LEFT, 0);
-    motor_drive(motor_b, LEFT, 0);
 }
+
+static uint8_t speed = 0;
 
 void loop()
 {
-    // wait for 4 bytes from serial (dir1, speed1, dir2, speed2)
     if (Serial.available() >= 4) {
         
         char buffer[4];
