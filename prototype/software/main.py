@@ -1,4 +1,4 @@
-from rangefinder.ultrasonic_communicate import Rangefinder
+from hardware_interface.ultrasonic import Rangefinder
 import time
 
 rf = Rangefinder()

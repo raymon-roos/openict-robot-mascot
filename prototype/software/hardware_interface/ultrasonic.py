@@ -1,6 +1,7 @@
 # Importing Libraries 
 import serial 
-import time 
+import time
+
 arduino = serial.Serial(port='COM7', baudrate=115200, timeout=.1) #'/dev/ttyACM0' ubuntu | 'COM4' windows
 
 class Rangefinder:
@@ -13,9 +14,4 @@ class Rangefinder:
       def print_range(self): 
             value = self.read()
             if len(value) != 0:
-                  print(value) 
-                  
-
-
-
-
+                  print(value)
