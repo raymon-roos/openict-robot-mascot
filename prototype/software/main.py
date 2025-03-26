@@ -4,6 +4,7 @@ import time
 rf = Rangefinder()
 while True:
     rf.print_range()
+    time.sleep(0.05)
 
 
 
