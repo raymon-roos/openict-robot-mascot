@@ -1,4 +1,4 @@
-**/.pio
-**/.vscode
-**/.venv
-**/__pycache__
+.pio
+.vscode
+.venv
+__pycache__
