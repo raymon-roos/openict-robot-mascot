@@ -4,3 +4,4 @@
 __pycache__
 .cache
 .clangd
+compile_commands.*
