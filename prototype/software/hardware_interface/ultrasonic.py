@@ -7,7 +7,13 @@ import time
 class Rangefinder:
       def __init__(self, port='COM4'):
             self.arduino = serial.Serial(port, baudrate=115200, timeout=1) #'/dev/ttyACM0' ubuntu | 'COM4' windows
+            
+            # clear buffer
             self.arduino.read_all()
+
+      def __del__(self):
+            # close serial connection
+            self.arduino.close()
 
       def read(self):
             # request data
