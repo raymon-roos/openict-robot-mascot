@@ -15,9 +15,17 @@ SRF05
     range2(TRIG2, ECHO2),
     range3(TRIG3, ECHO3);
 
+void ser_flush()
+{
+    while (Serial.available()) Serial.read();
+}
+
 void setup()
 {
     Serial.begin(115200);
+
+    // remove startup messages if they're still there
+    ser_flush();
 }
 
 void loop()
@@ -26,7 +34,7 @@ void loop()
     // for it by sending a single generic byte over serial
     if (!Serial.available()) return;
     // clear input buffer
-    int c = Serial.read();
+    ser_flush();
 
     // distance variables
     float d1, d2, d3;
