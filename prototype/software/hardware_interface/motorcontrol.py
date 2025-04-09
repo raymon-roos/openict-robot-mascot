@@ -6,10 +6,10 @@ class MotorController:
     LEFT = 0
     RIGHT = 1
 
-    def __init__(self):
+    def __init__(self, port='/dev/ttyUSB0'):
         print("connecting to motor serial port")
 
-        self.serial = serial.Serial('/dev/ttyUSB')
+        self.serial = serial.Serial(port)
 
     # on object destruction, close serial connection
     def __del__(self):
