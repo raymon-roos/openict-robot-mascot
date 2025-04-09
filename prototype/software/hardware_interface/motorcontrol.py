@@ -9,7 +9,7 @@ class MotorController:
     def __init__(self, port='/dev/ttyUSB0'):
         print("connecting to motor serial port")
 
-        self.serial = serial.Serial(port)
+        self.serial = serial.Serial(port, baudrate=115200, timeout=.1)
 
     # on object destruction, close serial connection
     def __del__(self):

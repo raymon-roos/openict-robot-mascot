@@ -34,7 +34,6 @@ void loop()
     // for it by sending a single generic byte over serial
     if (!Serial.available()) return;
     // clear input buffer
-    ser_flush();
 
     // distance variables
     float d1, d2, d3;
@@ -42,11 +41,11 @@ void loop()
     // prevent one sensor from reading the lingering audio wave
     // of another by waiting a bit before sending the next pulse
     d1 = range1.getMeter();
-    delay(40);
+    delay(30);
     d2 = range2.getMeter();
-    delay(40);
+    delay(30);
     d3 = range3.getMeter();
-    delay(40);
+    delay(30);
 
     // output formatting
     Serial.print(d1); Serial.print(",");
