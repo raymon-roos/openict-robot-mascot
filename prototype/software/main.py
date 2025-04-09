@@ -20,12 +20,12 @@ def read_ultrasonic():
     reader = Rangefinder()
 
     while True:
-        dst_str = reader.read()
+        dst = reader.read()
 
-        if dst_str.__len__() == 0: continue
+        if dst.__len__() == 0: continue
 
         # print 3 floats
-        print()
+        print(f"{dst[0]}, {dst[1]}, {dst[2]}")
 
         time.sleep(0.1)
 

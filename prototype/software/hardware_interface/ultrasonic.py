@@ -6,13 +6,14 @@ import time
 
 class Rangefinder:
       def __init__(self, port='COM4'):
-            self.arduino = serial.Serial(port, baudrate=115200, timeout=.1) #'/dev/ttyACM0' ubuntu | 'COM4' windows
+            self.arduino = serial.Serial(port, baudrate=115200, timeout=1) #'/dev/ttyACM0' ubuntu | 'COM4' windows
             self.arduino.read_all()
 
       def read(self):
             # request data
             self.arduino.write(b"0")
-            data = self.arduino.readline().decode('utf-8').split(",")
+            data = self.arduino.readline()
+            data = data.decode('utf-8').split(",")
 
             # return an array of 3 floating point values
             if data.__len__() != 3:
