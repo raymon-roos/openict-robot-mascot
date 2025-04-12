@@ -1,0 +1,32 @@
+name: Sync
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight. 
+  push:
+    branches:
+      - main # Runs when pushed to main
+      
+  workflow_dispatch: # Allows manual triggering of the workflow
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+    - name: Sync
+      env:
+      # These need to be added in : Settings -> Secrets and variables -> actions
+        AZURE_REPO: ${{ secrets.AZURE_REPO }}
+        AZURE_PAT: ${{ secrets.AZURE_PAT }}
+      run: |
+        git remote add azure https://$(AZURE_PAT)@dev.azure.com/your_organization/your_project/_git/your_repo
+        git push --mirror azure
